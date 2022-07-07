@@ -3,20 +3,16 @@ import './header.css';
 import { NavLink } from 'react-router-dom';
 
 const navigationLinks = [
+
   {
     id: 1,
-    title: 'home',
+    title: 'Book',
     route: '/',
   },
   {
     id: 2,
-    title: 'Calculator',
-    route: '/calculator',
-  },
-  {
-    id: 3,
-    title: 'Qoutes',
-    route: '/quotes',
+    title: 'Categories',
+    route: '/categories',
   },
 ];
 
@@ -24,7 +20,9 @@ function header() {
   return (
     <>
       <div className="App">
+      <h1 className=' logo'> BookShlef</h1>
         <nav className="App-header">
+        
           <ul className="App-header-container">
             {navigationLinks.map(({ id, title, route }) => (
               <li key={id}>

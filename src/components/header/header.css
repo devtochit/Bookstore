@@ -6,6 +6,14 @@
   height: 10vh;
 }
 
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-right: 1116px;
+  align-items: center;
+}
+
 .App-header {
   display: flex;
   justify-content: center;
