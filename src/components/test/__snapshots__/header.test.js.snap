@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="App"
+>
+  <nav
+    className="App-header"
+  >
+    <ul
+      className="App-header-container"
+    >
+      <li>
+        <a
+          aria-current="page"
+          className="active"
+          href="/"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "#7600dc",
+              "borderRadius": "2px",
+              "color": "#fff",
+            }
+          }
+        >
+          home
+        </a>
+      </li>
+      <li>
+        <a
+          className=""
+          href="/calculator"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "#f0f0f0",
+              "borderRadius": "",
+              "color": "#545e6f",
+            }
+          }
+        >
+          Calculator
+        </a>
+      </li>
+      <li>
+        <a
+          className=""
+          href="/quotes"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "#f0f0f0",
+              "borderRadius": "",
+              "color": "#545e6f",
+            }
+          }
+        >
+          Qoutes
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
