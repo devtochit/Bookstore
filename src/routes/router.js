@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Calculate from '../components/calculator/calculator';
-import HomePage from '../components/Hompage/Homepage';
+import Book from '../components/Hompage';
 import QuotesPage from '../components/QoutePage/QoutePage';
 
 function Routing() {
