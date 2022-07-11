@@ -5,12 +5,20 @@ import {
 import Header from './components/header/header';
 import Routing from './routes/router';
 
+const item = [{
+  id: 1,
+  title: ' The Pragmatic programmer ',
+  author: ' jesse uzoma',
+  category: 'development',
+}];
+
 function App() {
   return (
     <>
       <Router>
         <Header />
-        <Routing />
+
+        <Routing item={item} />
 
       </Router>
     </>

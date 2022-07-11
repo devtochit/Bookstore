@@ -20,7 +20,9 @@ function header() {
   return (
     <>
       <div className="App">
+      <h1 className=' logo'> BookShlef</h1>
         <nav className="App-header">
+        
           <ul className="App-header-container">
             {navigationLinks.map(({ id, title, route }) => (
               <li key={id}>

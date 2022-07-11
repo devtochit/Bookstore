@@ -1,13 +1,20 @@
 import React from 'react';
-import './HomePage.css';
+import './Book.css';
+import AddButton from '../addButton/addButton'
 
-const Home = ({ title, author, item_id, category, }) => (
-  <div className="home" >
-    <div className="title">{title}</div>
-    <div className="author">{author}</div>
-    <div className="category">{category}</div>
+const Home = ({item}) => (
 
+  item.map( items =>(
+    <div className="home" >
+    <ul>
+    <div>  <h6> Caterygory</h6>  <li key={items.id}> {items.category}</li></div>
+    <div> <h6> Title</h6>  <li> {items.title}</li></div>
+    <div>  <h6> Athour:</h6>  <li> {items.author}</li></div>
+    </ul>
+    <AddButton/>
   </div>
+  ))
+
 );
 export default Home;
 
