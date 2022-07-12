@@ -1,17 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { CHECK_STATUS } from './constant';
 
-const initialState = {
-  item: 'undercontruction',
+const initialState = 'UNDERCONTRUCTION';
+
+// const initialState = {}
+
+export default (state = initialState, { type, payload }) => {
+  switch (type) {
+    case CHECK_STATUS:
+      return { ...state, ...payload };
+
+    default:
+      return state;
+  }
 };
-
-export const categorySlice = createSlice({
-  name: 'category',
-  initialState,
-  reducers: {
-    selectCategory: (state, action) => {
-            state.item = action.payload; // eslint-disable-line
-    },
-  },
-});
-export const { selectCategory } = categorySlice.actions;
-export default categorySlice.reducer;
