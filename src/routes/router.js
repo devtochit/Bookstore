@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import Categories from '../components/category/category';
 import Book from '../components/book/Book';
+import Categories from '../components/category/category';
 
 function Routing({ item }) {
   return (
