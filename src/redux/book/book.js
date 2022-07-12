@@ -1,5 +1,5 @@
 // action
-import { REMOVE_BOOK, ADD_BOOK } from './constant';
+import { REMOVE_BOOK, ADD_BOOK } from '../../util/constant';
 
 const initialState = [
   {

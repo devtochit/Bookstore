@@ -1,4 +1,4 @@
-import { CHECK_STATUS } from './constant';
+import { CHECK_STATUS } from '../../util/constant';
 
 const initialState = 'UNDERCONTRUCTION';
 
