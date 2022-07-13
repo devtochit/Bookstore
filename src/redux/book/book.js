@@ -1,5 +1,29 @@
 // action
 import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { customFetch, id } from "../../util/axios";
+
+
+export const getBookThunk = createAsyncThunk(
+  'apps/:id/books',
+  async (name, thunkAPI) => {
+    try {
+      const response = await axios(customFetch)
+    } catch (err) {
+      return thunkAPI.rejectWithValue('something went wrong')
+    }
+  }
+
+)
+
+
+
+
+
+
+
+
+
 
 // const book = [{
 //   title: 'book 1',
@@ -41,9 +65,21 @@ export const bookSlice = createSlice({
       return {
         ...initialState
       }
-    }
-
+    },
   },
+  extraReducers: {
+    [getBookThunk.pending]: (state) => {
+      state.isLoading = true
+    },
+    [getBookThunk.fulfilled]: (state, action) => {
+      state.isLoading = false
+      state.bookItems = action.payload
+    },
+    [getBookThunk.rejected]: (state, action) => {
+      console.log(action)
+      state.isLoading = false
+    }
+  }
 });
 
 export const { addBook, deleteBook, clearValues } = bookSlice.actions;
