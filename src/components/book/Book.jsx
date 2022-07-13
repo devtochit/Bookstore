@@ -1,22 +1,31 @@
-import React from 'react';
+import React from 'react'
+import { useDispatch } from 'react-redux';
+import { deleteBook } from '../../redux/book/book';
 import './Book.css';
-import AddButton from '../addButton/addButton'
 
-const Home = ({item}) => (
+function Book({ id, title, author, }) {
+  const dispatch = useDispatch();
+  return (
+    <div>
+      <h1> Book Available</h1>
+      <ul>
+        <li key={id}>
+          {title}
+        </li>
+        <li> {author}</li>
+      </ul>
+      <div>
+        <button
+          onClick={() => {
+            dispatch(deleteBook(id));
+          }}
+          type="button">
+          remove
+        </button>
 
-  item.map( items =>(
-    <div className="home" >
-    <ul>
-    <div>  <h6> Caterygory</h6>  <li key={items.id}> {items.category}</li></div>
-    <div> <h6> Title</h6>  <li> {items.title}</li></div>
-    <div>  <h6> Athour:</h6>  <li> {items.author}</li></div>
-    </ul>
-    <AddButton/>
-  </div>
-  ))
+      </div>
+    </div>
+  )
+}
 
-);
-export default Home;
-
-
-
+export default Book

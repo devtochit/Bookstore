@@ -1,41 +1,43 @@
 // action
-import { REMOVE_BOOK, ADD_BOOK } from '../../util/constant';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [
-  {
-    title: 'book 1',
-    author: 'author 1',
-    id: 1,
-  },
-  {
-    title: 'book 2',
-    author: 'author 2',
-    id: 2,
-  },
-  {
-    title: 'book 3',
-    author: 'author 3',
-    id: 3,
-  },
+const book = [{
+  title: 'book 1',
+  author: 'author 1',
+  id: 1,
+},
+{
+  title: 'book 2',
+  author: 'author 2',
+  id: 2,
+},
+{
+  title: 'book 3',
+  author: 'author 3',
+  id: 3,
+},
 ];
 
-// reducer
-
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_BOOK:
-      return [...state, action.payload];
-    case REMOVE_BOOK:
-      return state.filter((i) => i.id !== action.payload.id);
-    default: return state;
-  }
+const initialState = {
+  bookItems: book,
+  isLoading: true,
 };
-const addBook = (book) => ({
-  type: ADD_BOOK,
-  payload: book,
+
+export const bookSlice = createSlice({
+  name: 'Book',
+  initialState,
+  reducers: {
+    addBook: (state, action) => {
+      const item = action.payload;
+      state.bookItems.push(item); // eslint-disable-line
+    },
+
+    deleteBook: (state, action) => {
+      const itemId = action.payload;
+      state.bookItems = state.bookItems.filter((book) => book.id !== itemId);  // eslint-disable-line
+    },
+  },
 });
-const removeBook = (id) => ({
-  type: removeBook,
-  payload: id,
-});
-export { addBook, removeBook };
+
+export const { addBook, deleteBook } = bookSlice.actions;
+export default bookSlice.reducer;

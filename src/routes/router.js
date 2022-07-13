@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import Book from '../components/book/Book';
+import Book from '../components/book/bookContainer';
 import Categories from '../components/category/category';
 
-function Routing({ item }) {
+function Routing() {
   return (
     <Routes>
-      <Route exact path="/" element={<Book item={item} />} />
+      <Route exact path="/" element={<Book />} />
       <Route exact path="/categories" element={<Categories />} />
     </Routes>
 
