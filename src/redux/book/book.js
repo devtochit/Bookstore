@@ -1,25 +1,25 @@
 // action
 import { createSlice } from '@reduxjs/toolkit';
 
-const book = [{
-  title: 'book 1',
-  author: 'author 1',
-  id: 1,
-},
-{
-  title: 'book 2',
-  author: 'author 2',
-  id: 2,
-},
-{
-  title: 'book 3',
-  author: 'author 3',
-  id: 3,
-},
-];
+// const book = [{
+//   title: 'book 1',
+//   author: 'author 1',
+//   id: 1,
+// },
+// {
+//   title: 'book 2',
+//   author: 'author 2',
+//   id: 2,
+// },
+// {
+//   title: 'book 3',
+//   author: 'author 3',
+//   id: 3,
+// },
+// ];
 
 const initialState = {
-  bookItems: book,
+  bookItems: [],
   isLoading: true,
 };
 
@@ -36,8 +36,15 @@ export const bookSlice = createSlice({
       const itemId = action.payload;
       state.bookItems = state.bookItems.filter((book) => book.id !== itemId);  // eslint-disable-line
     },
+
+    clearValues: () => {
+      return {
+        ...initialState
+      }
+    }
+
   },
 });
 
-export const { addBook, deleteBook } = bookSlice.actions;
+export const { addBook, deleteBook, clearValues } = bookSlice.actions;
 export default bookSlice.reducer;
