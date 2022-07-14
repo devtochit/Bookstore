@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { deleteBook } from '../../redux/book/book';
+// import { deleteBook } from '../../redux/book/book';
 import './Book.css';
 
 function Book({ id, title, author, }) {

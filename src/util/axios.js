@@ -1,8 +1,6 @@
-import axios from "axios";
+const basePoint = () => 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+const generalPoint = () => `${basePoint()}/apps/2dzOrYLGRTxiKCYCxUvD`;
+const bookEndPoint = () => `${generalPoint()}/books`;
+const deleteBook = (idOfBook) => `${bookEndPoint()}/${idOfBook}`;
 
-const customFetch = axios.create({
-    baseURL: 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/'
-})
-const id = 'I6mfoYnGeABBcZ3LwXcr'
-
-export { customFetch, id }
+export { bookEndPoint, deleteBook };

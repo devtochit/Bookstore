@@ -1,20 +1,12 @@
 // action
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { customFetch, id } from "../../util/axios";
+import { getBookThunk, addBookThunk, removeBookThunk } from './bookThunk'
 
+export const getBook = createAsyncThunk('job/getBook', getBookThunk)
+export const addingBook = createAsyncThunk('job/addingBook', addBookThunk)
+export const removeBook = createAsyncThunk('job/removeBook', removeBookThunk)
 
-export const getBookThunk = createAsyncThunk(
-  'apps/:id/books',
-  async (name, thunkAPI) => {
-    try {
-      const response = await axios(customFetch)
-    } catch (err) {
-      return thunkAPI.rejectWithValue('something went wrong')
-    }
-  }
-
-)
 
 
 
@@ -68,14 +60,36 @@ export const bookSlice = createSlice({
     },
   },
   extraReducers: {
-    [getBookThunk.pending]: (state) => {
+    [getBook.pending]: (state) => {
       state.isLoading = true
     },
-    [getBookThunk.fulfilled]: (state, action) => {
+    [getBook.fulfilled]: (state, action) => {
       state.isLoading = false
       state.bookItems = action.payload
     },
-    [getBookThunk.rejected]: (state, action) => {
+    [getBook.rejected]: (state, action) => {
+      console.log(action)
+      state.isLoading = false
+    },
+    [addingBook.pending]: (state) => {
+      state.isLoading = true
+    },
+    [addingBook.fulfilled]: (state, action) => {
+      state.isLoading = false
+      state.bookItems = action.payload
+    },
+    [addingBook.rejected]: (state, action) => {
+      console.log(action)
+      state.isLoading = false
+    },
+    [removeBook.pending]: (state) => {
+      state.isLoading = true
+    },
+    [removeBook.fulfilled]: (state, action) => {
+      state.isLoading = false
+      state.bookItems = action.payload
+    },
+    [removeBook.rejected]: (state, action) => {
       console.log(action)
       state.isLoading = false
     }
