@@ -1,10 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteBook } from '../../redux/book/book';
 import './Book.css';
 
-function Book({ id, title, author, }) {
+function Book({
+  id, title, author, deletebook,
+}) {
   const dispatch = useDispatch();
+  const removeBook = (id) => {
+    deletebook(id);
+  };
+
   return (
     <div>
       <h1> Book Available</h1>
@@ -12,20 +17,24 @@ function Book({ id, title, author, }) {
         <li key={id}>
           {title}
         </li>
-        <li> {author}</li>
+        <li>
+          {' '}
+          {author}
+        </li>
       </ul>
       <div>
         <button
           onClick={() => {
-            dispatch(deleteBook(id));
+            dispatch(removeBook(id));
           }}
-          type="button">
+          type="button"
+        >
           remove
         </button>
 
       </div>
     </div>
-  )
+  );
 }
 
-export default Book
+export default Book;

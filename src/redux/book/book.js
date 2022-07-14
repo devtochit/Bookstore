@@ -1,86 +1,57 @@
-// action
-import { createSlice } from '@reduxjs/toolkit';
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { customFetch, id } from "../../util/axios";
+import { getData, removeData, uploadData } from '../../util/axios';
+// Actions
+const ADDBOOK = 'bookstore/books/ADDBOOKS';
+const DELETEBOOKS = 'bookstore/books/DELETEBOOKS';
+const READ_BOOKS = 'bookstore/books/READ_BOOKS';
 
+const initialState = [];
 
-export const getBookThunk = createAsyncThunk(
-  'apps/:id/books',
-  async (name, thunkAPI) => {
-    try {
-      const response = await axios(customFetch)
-    } catch (err) {
-      return thunkAPI.rejectWithValue('something went wrong')
+// Reducer
+
+export function booksReducer(state = initialState, action) {
+  switch (action.type) {
+    case ADDBOOK: {
+      return [
+        ...state,
+        action.payload,
+      ];
     }
+    case DELETEBOOKS: {
+      const ActualBooks = state.filter((book) => book.id !== action.payload);
+      return ActualBooks;
+    }
+    case READ_BOOKS: {
+      return action.payload;
+    }
+    default:
+      return initialState;
   }
+}
 
-)
+// Action creators
 
-
-
-
-
-
-
-
-
-
-// const book = [{
-//   title: 'book 1',
-//   author: 'author 1',
-//   id: 1,
-// },
-// {
-//   title: 'book 2',
-//   author: 'author 2',
-//   id: 2,
-// },
-// {
-//   title: 'book 3',
-//   author: 'author 3',
-//   id: 3,
-// },
-// ];
-
-const initialState = {
-  bookItems: [],
-  isLoading: true,
+// export const addbook = (book) => ({ type: ADDBOOK, payload: book });
+export const addbook = (book) => async (dispatch) => {
+  await uploadData(book);
+  dispatch({
+    type: ADDBOOK, payload: book,
+  });
 };
 
-export const bookSlice = createSlice({
-  name: 'Book',
-  initialState,
-  reducers: {
-    addBook: (state, action) => {
-      const item = action.payload;
-      state.bookItems.push(item); // eslint-disable-line
-    },
+// export const deletebook = (id) => ({ type: DELETEBOOKS, payload: id });
 
-    deleteBook: (state, action) => {
-      const itemId = action.payload;
-      state.bookItems = state.bookItems.filter((book) => book.id !== itemId);  // eslint-disable-line
-    },
+export const deletebook = (id) => async (dispatch) => {
+  await removeData(id);
+  dispatch({
+    type: DELETEBOOKS,
+    payload: id,
+  });
+};
 
-    clearValues: () => {
-      return {
-        ...initialState
-      }
-    },
-  },
-  extraReducers: {
-    [getBookThunk.pending]: (state) => {
-      state.isLoading = true
-    },
-    [getBookThunk.fulfilled]: (state, action) => {
-      state.isLoading = false
-      state.bookItems = action.payload
-    },
-    [getBookThunk.rejected]: (state, action) => {
-      console.log(action)
-      state.isLoading = false
-    }
-  }
-});
-
-export const { addBook, deleteBook, clearValues } = bookSlice.actions;
-export default bookSlice.reducer;
+export const readBooks = () => async (dispatch) => {
+  const books = await getData();
+  dispatch({
+    type: READ_BOOKS,
+    payload: books,
+  });
+};

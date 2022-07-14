@@ -1,20 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Book from './Book'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import AddButton from '../addButton/addButton';
-
+import { deletebook, readBooks } from '../../redux/book/book'
 
 function bookContainer() {
-    const { bookItems } = useSelector((configureStore) => configureStore.book);
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(readBooks())
+    })
+    const state = useSelector((configureStore) => configureStore.book);
 
+    const handleDelete = (id) => {
+        dispatch(deletebook(id))
+    }
     return (
         <>
             <div>
-                {bookItems.map((bookItem) => {
+                {state.map((bookItem) => {
 
                     return (
-                        <Book key={bookItem.id} {...bookItem} />
+                        <Book
+                            key={bookItem.id}
+                            {...bookItem}
+                            deletebook={handleDelete}
+
+                        />
 
                     )
 
