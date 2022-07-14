@@ -35,8 +35,7 @@ export const bookSlice = createSlice({
       const item = action.payload;
       state.bookItems = item; // eslint-disable-line
     },
-    [getBook.rejected]: (state, action) => {
-      console.log(action);
+    [getBook.rejected]: (state) => {
       state.isLoading = false;// eslint-disable-line
     },
     [addingBook.pending]: (state) => {
@@ -44,12 +43,10 @@ export const bookSlice = createSlice({
     },
     [addingBook.fulfilled]: (state, action) => {
       state.isLoading = false;// eslint-disable-line
-      console.log(action);
       const item = action.meta.arg;
       state.bookItems.push(item);// eslint-disable-line
     },
-    [addingBook.rejected]: (state, action) => {
-      console.log(action);
+    [addingBook.rejected]: (state) => {
       state.isLoading = false;// eslint-disable-line
     },
     [removeBook.pending]: (state) => {
@@ -60,8 +57,7 @@ export const bookSlice = createSlice({
       const itemId = action.meta.arg;
       state.bookItems = state.bookItems.filter((book) => book.id !== itemId);// eslint-disable-line
     },
-    [removeBook.rejected]: (state, action) => {
-      console.log(action);
+    [removeBook.rejected]: (state) => {
       state.isLoading = false;// eslint-disable-line
     },
   },
