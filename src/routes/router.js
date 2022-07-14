@@ -1,14 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
-import Calculate from '../components/calculator/calculator';
-import HomePage from '../components/Hompage/Homepage';
-import QuotesPage from '../components/QoutePage/QoutePage';
+import Book from '../components/book/bookContainer';
+import Categories from '../components/category/category';
 
 function Routing() {
   return (
     <Routes>
-      <Route exact path="/" element={<HomePage />} />
-      <Route exact path="/calculator" element={<Calculate />} />
-      <Route exact path="/quotes" element={<QuotesPage />} />
+      <Route exact path="/" element={<Book />} />
+      <Route exact path="/categories" element={<Categories />} />
     </Routes>
 
   );

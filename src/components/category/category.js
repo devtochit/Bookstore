@@ -1,10 +1,23 @@
 import React from 'react';
-import './QoutePage.css';
+import { useDispatch } from 'react-redux';
+import { checkStatus } from '../../redux/category/category';
 
-const Quotes = () => (
-  <h2 className="quote">
-    “Sometimes it is the people no one can imagine anything of who do the
-    things no one can imagine.” -Alan Turing
-  </h2>
-);
-export default Quotes;
+import './category.css';
+
+function category() {
+  const dispatch = useDispatch();
+  return (
+    <button
+      aria-label="Save"
+      type="button"
+      onClick={() => {
+        dispatch(checkStatus());
+      }}
+    >
+      {' '}
+      checkstatus
+    </button>
+  );
+}
+
+export default category;
