@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addbook } from '../../redux/book/book';
+import { addingBook } from '../../redux/book/book';
 
 function addButton() {
   const dispatch = useDispatch();
@@ -24,13 +24,14 @@ function addButton() {
   const onSubmit = (e) => {
     // const { title, author } = values;
     e.preventDefault();
-    dispatch(addbook({
-      title: bookTitle,
-      author: authorInput,
-      id: uuidv4(),
-      category,
-
-    }));
+    dispatch(addingBook(
+      {
+        title: bookTitle,
+        author: authorInput,
+        id: uuidv4(),
+        category,
+      },
+    ));
   };
 
   return (
