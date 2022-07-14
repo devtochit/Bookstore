@@ -15,15 +15,15 @@ export const bookSlice = createSlice({
   name: 'Book',
   initialState,
   reducers: {
-    addBook: (state, action) => {
-      const item = action.payload;
-      state.bookItems.push(item); // eslint-disable-line
-    },
+    // addBook: (state, action) => {
+    //   const item = action.payload;
+    //   state.bookItems.push(item); // eslint-disable-line
+    // },
 
-    deleteBook: (state, action) => {
-      const itemId = action.removeBook;
-      state.bookItems = state.bookItems.filter((book) => book.id !== itemId);  // eslint-disable-line
-    },
+    // deleteBook: (state, action) => {
+    //   const itemId = action.removeBook;
+    //   state.bookItems = state.bookItems.filter((book) => book.id !== itemId);
+    // },
 
   },
   extraReducers: {
@@ -33,7 +33,7 @@ export const bookSlice = createSlice({
     [getBook.fulfilled]: (state, action) => {
       state.isLoading = false;// eslint-disable-line
       const item = action.payload;
-      state.bookItems = bookItems.push(item); // eslint-disable-line
+      state.bookItems = item; // eslint-disable-line
     },
     [getBook.rejected]: (state, action) => {
       console.log(action);
