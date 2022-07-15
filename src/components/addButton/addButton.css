@@ -1,3 +1,36 @@
 .chai {
   background-color: aliceblue;
 }
+.form {
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.form-header {
+  color: #888;
+  font-size: 20px;
+  font-family: Monserrat, serif;
+  padding-bottom: 24px;
+}
+
+.title-imput {
+  padding: 5px;
+  width: 35.5%;
+  margin-right: 15px;
+}
+
+.title-select {
+  width: 15%;
+  padding: 5px;
+  margin-right: 15px;
+}
+
+.button-submit {
+  padding: 5px 16px;
+  background-color: #0290ff;
+  border: 0.3px solid #e8e8e8;
+  border-radius: 4%;
+  color: #e8e8e8;
+  cursor: pointer;
+}

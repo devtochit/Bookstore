@@ -1,52 +1,40 @@
-import React from 'react';
-import './header.css';
+import { FaUserCircle } from 'react-icons/fa';
+import { AiOutlineCloseCircle, AiOutlineMenu } from 'react-icons/ai';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import {
+  DivCont, NavTag, LinksDiv, LogoH1, Ul, MenuDiv, UserIcon, MenuItem,
+} from './headerStyles';
 
-const navigationLinks = [
+function Nav() {
+  const [navIcon, setNavIcon] = useState(true);
 
-  {
-    id: 1,
-    title: 'Book',
-    route: '/',
-  },
-  {
-    id: 2,
-    title: 'Categories',
-    route: '/categories',
-  },
-];
-
-function header() {
+  const handleMenu = () => {
+    setNavIcon((prev) => !prev);
+  };
   return (
-    <>
-      <div className="App">
-      <h1 className=' logo'> BookShlef</h1>
-        <nav className="App-header">
-        
-          <ul className="App-header-container">
-            {navigationLinks.map(({ id, title, route }) => (
-              <li key={id}>
-                <NavLink
-                  to={route}
-                  style={({ isActive }) => ({
-                    color: isActive ? '#fff' : '#545e6f',
-                    background: isActive ? '#7600dc' : '#f0f0f0',
-                    borderRadius: isActive ? '2px' : '',
-                  })}
-                >
-
-                  {title}
-                </NavLink>
-              </li>
-            ))}
-
-          </ul>
-        </nav>
-      </div>
-
-    </>
-
+    <NavTag>
+      <DivCont>
+        <LinksDiv>
+          <LogoH1 className="logo">Bookstore CMS</LogoH1>
+          <Ul>
+            <MenuItem className="nav-link">
+              <NavLink to="/">Books</NavLink>
+            </MenuItem>
+            <MenuItem className="nav-link">
+              <NavLink to="/Categories">Categories</NavLink>
+            </MenuItem>
+          </Ul>
+        </LinksDiv>
+        <UserIcon>
+          <span><FaUserCircle /></span>
+          <MenuDiv onClick={handleMenu}>
+            {navIcon ? <AiOutlineMenu /> : <AiOutlineCloseCircle />}
+          </MenuDiv>
+        </UserIcon>
+      </DivCont>
+    </NavTag>
   );
 }
 
-export default header;
+export default Nav;
