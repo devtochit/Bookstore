@@ -1,41 +1,67 @@
 // action
-import { REMOVE_BOOK, ADD_BOOK } from '../../util/constant';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getBookThunk, uploadData, removeData } from '../../util/axios';
 
-const initialState = [
-  {
-    title: 'book 1',
-    author: 'author 1',
-    id: 1,
-  },
-  {
-    title: 'book 2',
-    author: 'author 2',
-    id: 2,
-  },
-  {
-    title: 'book 3',
-    author: 'author 3',
-    id: 3,
-  },
-];
+export const getBook = createAsyncThunk('job/getBook', getBookThunk);
+export const addingBook = createAsyncThunk('job/addingBook', uploadData);
+export const removeBook = createAsyncThunk('job/removeBook', removeData);
 
-// reducer
-
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_BOOK:
-      return [...state, action.payload];
-    case REMOVE_BOOK:
-      return state.filter((i) => i.id !== action.payload.id);
-    default: return state;
-  }
+const initialState = {
+  bookItems: [],
+  isLoading: true,
 };
-const addBook = (book) => ({
-  type: ADD_BOOK,
-  payload: book,
+
+export const bookSlice = createSlice({
+  name: 'Book',
+  initialState,
+  reducers: {
+    // addBook: (state, action) => {
+    //   const item = action.payload;
+    //   state.bookItems.push(item); // eslint-disable-line
+    // },
+
+    // deleteBook: (state, action) => {
+    //   const itemId = action.removeBook;
+    //   state.bookItems = state.bookItems.filter((book) => book.id !== itemId);
+    // },
+
+  },
+  extraReducers: {
+    [getBook.pending]: (state) => {
+      state.isLoading = true;// eslint-disable-line
+    },
+    [getBook.fulfilled]: (state, action) => {
+      state.isLoading = false;// eslint-disable-line
+      const item = action.payload;
+      state.bookItems = item; // eslint-disable-line
+    },
+    [getBook.rejected]: (state) => {
+      state.isLoading = false;// eslint-disable-line
+    },
+    [addingBook.pending]: (state) => {
+      state.isLoading = true;// eslint-disable-line
+    },
+    [addingBook.fulfilled]: (state, action) => {
+      state.isLoading = false;// eslint-disable-line
+      const item = action.meta.arg;
+      state.bookItems.push(item);// eslint-disable-line
+    },
+    [addingBook.rejected]: (state) => {
+      state.isLoading = false;// eslint-disable-line
+    },
+    [removeBook.pending]: (state) => {
+      state.isLoading = true;// eslint-disable-line
+    },
+    [removeBook.fulfilled]: (state, action) => {
+      state.isLoading = false; // eslint-disable-line
+      const itemId = action.meta.arg;
+      state.bookItems = state.bookItems.filter((book) => book.id !== itemId);// eslint-disable-line
+    },
+    [removeBook.rejected]: (state) => {
+      state.isLoading = false;// eslint-disable-line
+    },
+  },
 });
-const removeBook = (id) => ({
-  type: removeBook,
-  payload: id,
-});
-export { addBook, removeBook };
+
+export const { addBook, deleteBook, getValues } = bookSlice.actions;
+export default bookSlice.reducer;
