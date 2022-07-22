@@ -1,3 +1,141 @@
-.Application {
-  background-color: aliceblue;
+.book {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.688rem;
+  background-color: #fff;
+  border-radius: 2%;
+  border: 0.8px solid #e8e8e8;
+  margin-top: 24px;
+}
+
+.books-container {
+  min-height: 300px;
+  width: 95%;
+  margin: 50px auto;
+}
+
+.category {
+  width: 3.063rem;
+  height: 1.125rem;
+  margin: 0 2.438rem 0 0;
+  opacity: 0.5;
+  font-family: Montserrat, serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+}
+
+.title {
+  height: 1.813rem;
+  font-family: RobotoSlab, serif;
+  font-size: 1.375rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #121212;
+}
+
+.author {
+  width: 6.688rem;
+  height: 1.188rem;
+  margin: 0.25rem 0 0;
+  font-family: RobotoSlab, serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4386bf;
+}
+
+.comments {
+  display: flex;
+}
+
+.comment button {
+  background: none;
+  border: none;
+  padding-right: 12px;
+  margin-top: 10px;
+  width: 4.563rem;
+  height: 1.188rem;
+  font-family: RobotoSlab, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4386bf;
+  cursor: pointer;
+}
+
+.comment button:hover {
+  color: blue;
+}
+
+.remove {
+  border-left: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+}
+
+.progress-containner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 5px;
+  border: 5px solid #0290ff;
+  color: #fff;
+}
+
+.current-chap {
+  width: 7.875rem;
+  height: 1.125rem;
+  opacity: 0.5;
+  font-family: RobotoSlab, serif;
+  font-size: 16px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+}
+
+.chap {
+  height: 1.313rem;
+  font-family: RobotoSlab, serif;
+  font-size: 1rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.4px;
+  color: #121212;
+}
+
+.progress-update {
+  margin-top: 24px;
+  padding: 5px 16px;
+  background-color: #0290ff;
+  border: 0.3px solid #e8e8e8;
+  border-radius: 4%;
+  color: #e8f8e8;
+  cursor: pointer;
 }

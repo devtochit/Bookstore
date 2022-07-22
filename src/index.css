@@ -22,7 +22,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(229, 236, 215);
+  background-color: #fafafa;
 }
 
 code {
@@ -33,4 +33,12 @@ code {
     Consolas,
     'Courier New',
     monospace;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }

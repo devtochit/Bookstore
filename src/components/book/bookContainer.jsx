@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Book from './Book'
 import { useSelector, useDispatch } from 'react-redux';
 import AddButton from '../addButton/addButton';
-import { removeBook, getBook, getValues } from '../../redux/book/book'
+import { removeBook, getBook,  } from '../../redux/book/book'
 
 function bookContainer() {
 
@@ -24,7 +24,7 @@ function bookContainer() {
 
                     return (
                         <Book
-
+                         key={bookItem.id}
                             {...bookItem}
                             deletebook={handleDelete}
 

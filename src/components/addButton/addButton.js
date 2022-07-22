@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addingBook } from '../../redux/book/book';
+import './addButton.css';
 
 function addButton() {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ function addButton() {
   const [authorInput, setAuthorInput] = useState('');
   const [category, setCategory] = useState('');
 
-  const handleInput = (e) => {
+  const handleTitle = (e) => {
     setBookInput(e.target.value);
   };
 
@@ -35,25 +36,38 @@ function addButton() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        value={bookTitle}
-        onChange={(e) => handleInput(e)}
-        placeholder=" title"
-      />
+    <form className="form" onSubmit={onSubmit}>
 
+      <h1 className="form-header">ADD NEW BOOK</h1>
       <input
+        className="title-imput"
+        type="text"
+        value={bookTitle}
+        onChange={(e) => handleTitle(e)}
+        placeholder="book title"
+        required
+      />
+      <input
+        className="title-imput"
+        type="text"
         value={authorInput}
         onChange={(e) => handleAuthor(e)}
-        placeholder=" Author"
+        placeholder="book author"
+        required
       />
-      <button type="submit"> Add Book</button>
-
-      <select name="category" id="category" onChange={(e) => handleCategory(e)}>
+      <select className="title-select" name="category" id="category" onChange={(e) => handleCategory(e)}>
         <option value="default">Choose category...</option>
         <option value="Action">Action</option>
-        <option value="History">History</option>
+        <option value="History">Economy</option>
+        <option value="History">Science fiction</option>
       </select>
+      <button
+        className="button-submit"
+        type="submit"
+
+      >
+        ADD BOOK
+      </button>
     </form>
   );
 }
